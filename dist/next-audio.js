@@ -6,17 +6,6 @@
   };
 
   var NxAudio = nx.declare('nx.Audio', {
-    properties: {
-      times: {
-        get: function() {
-          var el = this.element;
-          return {
-            current: el.currentTime,
-            total: el.duration
-          };
-        }
-      }
-    },
     methods: {
       init: function(inOptions) {
         this.element = inOptions.element;

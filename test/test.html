@@ -7,8 +7,15 @@
     <title>Audio Test Page</title>
   </head>
   <body>
-    <audio id='audio' controls src="http://kolber.github.io/audiojs/demos/mp3/juicy.mp3">
+    <script src="/next-js-core2/dist/next-js-core2.js"></script>
+    <script src="/next-audio.js"></script>
+    <audio id="audio" controls src="http://kolber.github.io/audiojs/demos/mp3/juicy.mp3">
       NOT SUPPORT
     </audio>
+    <script>
+      var nxAudio = new nx.Audio({
+        element: document.getElementById('audio')
+      });
+    </script>
   </body>
 </html>
