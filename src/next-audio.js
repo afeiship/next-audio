@@ -2,7 +2,8 @@
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('next-js-core2');
   var PROP_HOOKS = {
-    rate: 'playbackRate'
+    rate: 'playbackRate',
+    current: 'currentTime'
   };
 
   var NxAudio = nx.declare('nx.Audio', {
@@ -21,7 +22,7 @@
       init: function(inOptions) {
         this.element = inOptions.element;
       },
-      // loop/volume/rate
+      // loop/volume/rate/current
       prop: function(inKey, inValue) {
         var key = PROP_HOOKS[inKey] || inKey;
         if (typeof inValue === 'undefined') {
