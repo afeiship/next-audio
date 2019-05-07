@@ -10,7 +10,7 @@
   "scripts": {
     "build": "gulp",
     "test": "jest",
-    "start": "node build/server.js",
+    "start": "node ./server.js",
     "version": "gulp bump"
   },
   "main": "dist/next-audio.js",
@@ -21,11 +21,14 @@
     "gulp": "^3.9.1",
     "gulp-bump": "^2.7.0",
     "gulp-concat": "^2.6.0",
+    "gulp-header": "^2.0.7",
     "gulp-load-plugins": "^1.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-size": "^2.1.0",
     "gulp-uglify": "^2.1.2",
     "jest": "^23.6.0",
+    "next-nice-comments": "github:afeiship/next-nice-comments",
+    "uglify-save-license": "^0.4.1",
     "yargs": "^4.7.1"
   },
   "dependencies": {
