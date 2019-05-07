@@ -1,5 +1,5 @@
 # next-audio
-> Pure audio api for next
+> Pure audio api for next.
 
 ## install:
 ```bash

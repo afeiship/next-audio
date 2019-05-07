@@ -1,9 +1,10 @@
 /*!
  * name: next-audio
- * @link: https://github.com/afeiship/next-audio
- * @version: 1.0.0
- * @license: MIT
+ * link: https://github.com/afeiship/next-audio
+ * version: 1.0.0
+ * license: MIT
  */
+
 (function() {
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('next-js-core2');
