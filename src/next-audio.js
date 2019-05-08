@@ -37,7 +37,7 @@
         var callback = this._onChange.bind(this);
         this.element = inElement;
         this.options = nx.mix(DEFAULT_OPTIONS, inOptions);
-        this._status = NxAudio.STATUS.stop;
+        this._status = NxAudio.STATUS.ended;
         this._playRes = NxDomEvent.on(this.element, 'play', callback);
         this._pauseRes = NxDomEvent.on(this.element, 'pause', callback);
         this._endedRes = NxDomEvent.on(this.element, 'ended', callback);
