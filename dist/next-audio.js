@@ -47,12 +47,14 @@
         this._playRes = NxDomEvent.on(this.element, 'play', callback);
         this._pauseRes = NxDomEvent.on(this.element, 'pause', callback);
         this._endedRes = NxDomEvent.on(this.element, 'ended', callback);
+        this._timeupdateRes = NxDomEvent.on(this.element, 'timeupdate', callback);
       },
 
       destroy: function() {
         this._playRes.destroy();
         this._pauseRes.destroy();
         this._endedRes.destroy();
+        this._timeupdateRes.destroy();
       },
       // loop/volume/rate/current
       prop: function(inKey, inValue) {
