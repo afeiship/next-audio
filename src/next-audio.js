@@ -73,7 +73,7 @@
         this.element.currentTime = this.times.total;
       },
       _onChange: function(inEvent) {
-        this._status = STATUS_HOOKS[inEvent.type] || inEvent.type;
+        this._status = inEvent.type;
         this.options.onChange(inEvent);
       }
     }
