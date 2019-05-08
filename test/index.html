@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Audio Test Page</title>
+  </head>
+  <body>
+    <script src="/next-js-core2/dist/next-js-core2.js"></script>
+    <script src="/next-audio.js"></script>
+    <audio id="audio" controls src="http://kolber.github.io/audiojs/demos/mp3/juicy.mp3">
+      NOT SUPPORT
+    </audio>
+
+    <div class="controls">
+      <h1>STATUS:</h1>
+      <button id="action-play">PLAY</button>
+      <button id="action-pause">PAUSE</button>
+      <button id="action-stop">STOP</button>
+    </div>
+    <input type="range" name="test" id="action-current" />
+    <script>
+      var btnPlay = document.getElementById('action-play');
+      var btnPause = document.getElementById('action-pause');
+      var btnStop = document.getElementById('action-stop');
+      var btnCurrent = document.getElementById('action-current');
+      var nxAudio = new nx.Audio({
+        element: document.getElementById('audio')
+      });
+      btnPlay.onclick = function() {
+        nxAudio.play();
+      };
+      btnPause.onclick = function() {
+        nxAudio.pause();
+      };
+      btnStop.onclick = function() {
+        nxAudio.stop();
+      };
+      btnCurrent.onchange = function(e) {
+        console.log(e.target.value);
+      };
+    </script>
+  </body>
+</html>

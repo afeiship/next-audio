@@ -19,6 +19,7 @@
         get: function() {
           var el = this.element;
           return {
+            rate: +(el.currentTime / el.duration).toFixed(2),
             current: el.currentTime,
             total: el.duration
           };
