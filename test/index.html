@@ -8,6 +8,7 @@
   </head>
   <body>
     <script src="/next-js-core2/dist/next-js-core2.js"></script>
+    <script src="/next-dom-event/dist/next-dom-event.js"></script>
     <script src="/next-audio.js"></script>
     <audio id="audio" controls src="http://kolber.github.io/audiojs/demos/mp3/juicy.mp3">
       NOT SUPPORT
@@ -26,7 +27,10 @@
       var btnStop = document.getElementById('action-stop');
       var btnCurrent = document.getElementById('action-current');
       var nxAudio = new nx.Audio({
-        element: document.getElementById('audio')
+        element: document.getElementById('audio'),
+        onChange: function(inEvent) {
+          console.log('type:', inEvent.type, inEvent);
+        }
       });
       btnPlay.onclick = function() {
         nxAudio.play();

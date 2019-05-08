@@ -8,12 +8,21 @@
 (function() {
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('next-js-core2');
+  var NxDomEvent = nx.dom.Event || require('next-dom-event');
+  var DEFAULT_OPTIONS = { element: null, onChange: nx.noop };
   var PROP_HOOKS = {
     rate: 'playbackRate',
     current: 'currentTime'
   };
 
   var NxAudio = nx.declare('nx.Audio', {
+    statics: {
+      STATUS: {
+        stop: 0,
+        play: 1,
+        pause: 2
+      }
+    },
     properties: {
       times: {
         get: function() {
@@ -24,11 +33,26 @@
             total: el.duration
           };
         }
+      },
+      status: function() {
+        return this._status;
       }
     },
     methods: {
       init: function(inOptions) {
-        this.element = inOptions.element;
+        var callback = this._onAction.bind(this);
+        this.options = nx.mix(DEFAULT_OPTIONS, inOptions);
+        this.element = this.options.element;
+        this._status = NxAudio.STATUS.stop;
+        this._playRes = NxDomEvent.on(this.element, 'play', callback);
+        this._pauseRes = NxDomEvent.on(this.element, 'pause', callback);
+        this._endedRes = NxDomEvent.on(this.element, 'ended', callback);
+      },
+
+      destroy: function() {
+        this._playRes.destroy();
+        this._pauseRes.destroy();
+        this._endedRes.destroy();
       },
       // loop/volume/rate/current
       prop: function(inKey, inValue) {
@@ -38,13 +62,21 @@
         }
         this.element[key] = inValue;
       },
-      stop: function() {
-        this.element.load();
+      play: function() {
+        this.element.play();
+        this._status = NxAudio.STATUS.play;
       },
-      'play,pause': function(inName) {
-        return function() {
-          this.element[inName].apply(this.element, arguments);
-        };
+      pause: function() {
+        this.element.pause();
+        this._status = NxAudio.STATUS.pause;
+      },
+      stop: function() {
+        this.element.pause();
+        this.element.currentTime = this.times.total;
+        this._status = NxAudio.STATUS.stop;
+      },
+      _onAction: function(inEvent) {
+        this.options.onChange(inEvent);
       }
     }
   });
