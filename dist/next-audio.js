@@ -40,7 +40,7 @@
     },
     methods: {
       init: function(inOptions) {
-        var callback = this._onAction.bind(this);
+        var callback = this._onChange.bind(this);
         this.options = nx.mix(DEFAULT_OPTIONS, inOptions);
         this.element = this.options.element;
         this._status = NxAudio.STATUS.stop;
@@ -75,7 +75,7 @@
         this.element.currentTime = this.times.total;
         this._status = NxAudio.STATUS.stop;
       },
-      _onAction: function(inEvent) {
+      _onChange: function(inEvent) {
         this.options.onChange(inEvent);
       }
     }
