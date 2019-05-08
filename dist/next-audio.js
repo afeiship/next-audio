@@ -68,7 +68,9 @@
       },
       move: function(inNumber) {
         var num = inNumber > 1 ? 1 : inNumber;
+        var paused = this.element.paused;
         this.element.currentTime = this.times.total * num;
+        paused ? this.pause() : this.play();
       },
       play: function() {
         this.element.play();
