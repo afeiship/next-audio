@@ -30,6 +30,3 @@ const nxAudio = new nx.Audio({ element: document.getElementById('audio') });
 nxAudio.play();
 nxAudio.prop('loop', true);
 ```
-
-## resources
-- https://github.com/afeiship
