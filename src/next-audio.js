@@ -24,8 +24,8 @@
           var el = this.element;
           return {
             rate: +(el.currentTime / el.duration).toFixed(2),
-            current: el.currentTime,
-            total: el.duration
+            current: el.currentTime || 0,
+            total: el.duration || 0
           };
         }
       },
