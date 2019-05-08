@@ -2,7 +2,7 @@
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('next-js-core2');
   var NxDomEvent = nx.dom ? nx.dom.Event : require('next-dom-event');
-  var DEFAULT_OPTIONS = { element: null, onChange: nx.noop };
+  var DEFAULT_OPTIONS = { onChange: nx.noop };
   var PROP_HOOKS = {
     rate: 'playbackRate',
     current: 'currentTime'
@@ -32,10 +32,10 @@
       }
     },
     methods: {
-      init: function(inOptions) {
+      init: function(inElement, inOptions) {
         var callback = this._onChange.bind(this);
+        this.element = inElement;
         this.options = nx.mix(DEFAULT_OPTIONS, inOptions);
-        this.element = this.options.element;
         this._status = NxAudio.STATUS.stop;
         this._playRes = NxDomEvent.on(this.element, 'play', callback);
         this._pauseRes = NxDomEvent.on(this.element, 'pause', callback);
