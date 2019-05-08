@@ -74,7 +74,7 @@
         this.element.currentTime = this.times.total;
       },
       _onChange: function(inEvent) {
-        this._status = inEvent.type;
+        this._status = NxAudio.STATUS[inEvent.type];
         this.options.onChange(inEvent);
       }
     }
