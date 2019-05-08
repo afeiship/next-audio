@@ -64,6 +64,10 @@
         }
         this.element[key] = inValue;
       },
+      seek: function(inNumber) {
+        var num = inNumber > 1 ? 1 : inNumber;
+        this.element.currentTime = this.times.total * num;
+      },
       play: function() {
         this.element.play();
         this._status = NxAudio.STATUS.play;
