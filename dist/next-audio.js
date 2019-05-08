@@ -18,9 +18,10 @@
   var NxAudio = nx.declare('nx.Audio', {
     statics: {
       STATUS: {
+        init: 0,
         play: 1,
         pause: 2,
-        ended: 0,
+        ended: 4,
         timeupdate: 3
       }
     },
@@ -44,7 +45,7 @@
         var callback = this._onChange.bind(this);
         this.element = inElement;
         this.options = nx.mix(DEFAULT_OPTIONS, inOptions);
-        this._status = NxAudio.STATUS.ended;
+        this._status = NxAudio.STATUS.init;
         this._playRes = NxDomEvent.on(this.element, 'play', callback);
         this._pauseRes = NxDomEvent.on(this.element, 'pause', callback);
         this._endedRes = NxDomEvent.on(this.element, 'ended', callback);
