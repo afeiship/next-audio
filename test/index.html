@@ -26,8 +26,7 @@
       var btnPause = document.getElementById('action-pause');
       var btnStop = document.getElementById('action-stop');
       var btnCurrent = document.getElementById('action-current');
-      var nxAudio = new nx.Audio({
-        element: document.getElementById('audio'),
+      var nxAudio = new nx.Audio(document.getElementById('audio'), {
         onChange: function(inEvent) {
           console.log('type:', inEvent.type, inEvent);
         }
