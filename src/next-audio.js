@@ -1,7 +1,7 @@
 (function() {
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('next-js-core2');
-  var NxDomEvent = nx.dom.Event || require('next-dom-event');
+  var NxDomEvent = nx.dom ? nx.dom.Event : require('next-dom-event');
   var DEFAULT_OPTIONS = { element: null, onChange: nx.noop };
   var PROP_HOOKS = {
     rate: 'playbackRate',
