@@ -18,9 +18,10 @@
   var NxAudio = nx.declare('nx.Audio', {
     statics: {
       STATUS: {
-        stop: 0,
         play: 1,
-        pause: 2
+        pause: 2,
+        ended: 0,
+        timeupdate: 3
       }
     },
     properties: {
@@ -70,18 +71,16 @@
       },
       play: function() {
         this.element.play();
-        this._status = NxAudio.STATUS.play;
       },
       pause: function() {
         this.element.pause();
-        this._status = NxAudio.STATUS.pause;
       },
       stop: function() {
         this.element.pause();
         this.element.currentTime = this.times.total;
-        this._status = NxAudio.STATUS.stop;
       },
       _onChange: function(inEvent) {
+        this._status = STATUS_HOOKS[inEvent.type] || inEvent.type;
         this.options.onChange(inEvent);
       }
     }
