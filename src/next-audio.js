@@ -14,8 +14,7 @@
         init: 0,
         play: 1,
         pause: 2,
-        ended: 4,
-        timeupdate: 3
+        ended: 4
       }
     },
     properties: {
@@ -61,9 +60,7 @@
       },
       move: function(inNumber) {
         var num = inNumber > 1 ? 1 : inNumber;
-        var paused = this.element.paused;
         this.element.currentTime = this.times.total * num;
-        paused ? this.pause() : this.play();
       },
       play: function() {
         this.element.play();
@@ -76,7 +73,13 @@
         this.element.currentTime = this.times.total;
       },
       _onChange: function(inEvent) {
-        this._status = NxAudio.STATUS[inEvent.type];
+        var type = inEvent.type;
+        var paused = this.element.paused;
+        if (type !== 'timeupdate') {
+          this._status = NxAudio.STATUS[type];
+        } else {
+          this._status = paused ? NxAudio.STATUS.pause : NxAudio.STATUS.play;
+        }
         this.options.onChange(inEvent);
       }
     }
