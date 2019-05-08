@@ -13,7 +13,8 @@ npm install -S afeiship/next-audio --registry=https://registry.npm.taobao.org
 | pause | method   | -           | Pause audio                         |
 | stop  | method   | -           | Stop audio                          |
 | prop  | method   | (name,args) | Set props(loop/volume/rate/current) |
-| times | property | -           | Return rate/current/total seconds        |
+| move  | method   | (num)       | Set seek percent(0-1)               |
+| times | property | -           | Return rate/current/total seconds   |
 
 ## usage
 ```html
