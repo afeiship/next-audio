@@ -5,11 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Audio Test Page</title>
+    <style>
+      .bar {
+        height: 30px;
+        background-image: repeating-linear-gradient(
+          -45deg,
+          #ccc,
+          #ccc 20px,
+          #eee 20px,
+          #eee 40px
+        );
+        animation: barberpole 12s linear infinite;
+      }
+
+      @keyframes barberpole {
+        from {
+          background-position: 0% 0%;
+        }
+
+        to {
+          background-position: 400px 0%;
+        }
+      }
+    </style>
   </head>
   <body>
     <script src="/next-js-core2/dist/next-js-core2.js"></script>
     <script src="/next-dom-event/dist/next-dom-event.js"></script>
     <script src="/next-audio.js"></script>
+    <div class="bar"/>
     <audio
       preload
       id="audio"
