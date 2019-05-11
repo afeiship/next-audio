@@ -10,7 +10,12 @@
     <script src="/next-js-core2/dist/next-js-core2.js"></script>
     <script src="/next-dom-event/dist/next-dom-event.js"></script>
     <script src="/next-audio.js"></script>
-    <audio preload id="audio" controls src="https://tsscdn.finxos.com/tu-resources/xlsfile/media/1.mp3">
+    <audio
+      preload
+      id="audio"
+      controls
+      src="https://tsscdn.finxos.com/tu-resources/xlsfile/media/1.mp3"
+    >
       NOT SUPPORT
     </audio>
 
@@ -27,6 +32,9 @@
       var btnStop = document.getElementById('action-stop');
       var btnCurrent = document.getElementById('action-current');
       var nxAudio = new nx.Audio(document.getElementById('audio'), {
+        onLoad: function() {
+          console.log(nxAudio.times);
+        },
         onChange: function(inEvent) {
           console.log('type:', inEvent.type, inEvent);
         }
