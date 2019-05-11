@@ -42,12 +42,13 @@
       init: function(inElement, inOptions) {
         var callback = this._onChange.bind(this);
         this.element = inElement;
-        this.options = nx.mix({ onChange: nx.noop }, inOptions);
+        this.options = nx.mix({ onChange: nx.noop, onLoad: nx.noop }, inOptions);
         this._status = NxAudio.STATUS.init;
         this._playRes = NxDomEvent.on(this.element, 'play', callback);
         this._pauseRes = NxDomEvent.on(this.element, 'pause', callback);
         this._endedRes = NxDomEvent.on(this.element, 'ended', callback);
         this._timeupdateRes = NxDomEvent.on(this.element, 'timeupdate', callback);
+        this._loadedmetadataRes = NxDomEvent.on(this.element, 'loadedmetadata', callback);
       },
 
       destroy: function() {
@@ -55,6 +56,7 @@
         this._pauseRes.destroy();
         this._endedRes.destroy();
         this._timeupdateRes.destroy();
+        this._loadedmetadataRes.destroy();
       },
       // loop/volume/rate/current
       prop: function(inKey, inValue) {
@@ -78,7 +80,7 @@
         this.element.pause();
         this.element.currentTime = this.times.total;
       },
-      _onChange: function(inEvent) {
+      onTimeUpdate: function(inEvent) {
         var type = inEvent.type;
         var paused = this.element.paused;
         if (type !== 'timeupdate') {
@@ -86,6 +88,16 @@
         } else {
           this._status = paused ? NxAudio.STATUS.pause : NxAudio.STATUS.play;
         }
+      },
+      onLoaded: function(inEvent) {
+        var type = inEvent.type;
+        if (type === 'loadedmetadata') {
+          this.options.onLoad(inEvent);
+        }
+      },
+      _onChange: function(inEvent) {
+        this.onTimeUpdate(inEvent);
+        this.onLoaded(inEvent);
         this.options.onChange(inEvent);
       }
     }
