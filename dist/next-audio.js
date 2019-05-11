@@ -89,7 +89,7 @@
           this._status = paused ? NxAudio.STATUS.pause : NxAudio.STATUS.play;
         }
       },
-      onLoaded: function(inEvent) {
+      onLoad: function(inEvent) {
         var type = inEvent.type;
         if (type === 'loadedmetadata') {
           this.options.onLoad(inEvent);
@@ -97,7 +97,7 @@
       },
       _onChange: function(inEvent) {
         this.onTimeUpdate(inEvent);
-        this.onLoaded(inEvent);
+        this.onLoad(inEvent);
         this.options.onChange(inEvent);
       }
     }
