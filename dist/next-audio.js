@@ -19,6 +19,7 @@
       STATUS: {
         init: 0,
         play: 1,
+        loaded: 3,
         pause: 2,
         ended: 4
       }
@@ -92,6 +93,7 @@
       onLoad: function(inEvent) {
         var type = inEvent.type;
         if (type === 'loadedmetadata') {
+          this._status = NxAudio.STATUS.loaded;
           this.options.onLoad(inEvent);
         }
       },
