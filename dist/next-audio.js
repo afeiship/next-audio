@@ -43,7 +43,7 @@
       init: function(inElement, inOptions) {
         var callback = this._onChange.bind(this);
         this.element = inElement;
-        this.options = nx.mix({ onChange: nx.noop, onLoad: nx.noop }, inOptions);
+        this.options = nx.mix({ onChange: nx.noop }, inOptions);
         this._status = NxAudio.STATUS.init;
         this._playRes = NxDomEvent.on(this.element, 'play', callback);
         this._pauseRes = NxDomEvent.on(this.element, 'pause', callback);
@@ -94,7 +94,6 @@
         var type = inEvent.type;
         if (type === 'loadedmetadata') {
           this._status = NxAudio.STATUS.loaded;
-          this.options.onLoad(inEvent);
         }
       },
       _onChange: function(inEvent) {

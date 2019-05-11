@@ -32,11 +32,12 @@
       var btnStop = document.getElementById('action-stop');
       var btnCurrent = document.getElementById('action-current');
       var nxAudio = new nx.Audio(document.getElementById('audio'), {
-        onLoad: function() {
-          console.log(nxAudio.times);
-        },
         onChange: function(inEvent) {
+          const { type } = inEvent;
           console.log('type:', inEvent.type, inEvent);
+          if (type === 'loadedmetadata') {
+            console.log(nxAudio.times);
+          }
         }
       });
       btnPlay.onclick = function() {
