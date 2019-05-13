@@ -36,13 +36,15 @@
       init: function(inElement, inOptions) {
         var callback = this._onChange.bind(this);
         this.element = inElement;
-        this.options = nx.mix({ onChange: nx.noop }, inOptions);
+        this._fixautoload = false;
+        this.options = nx.mix({ onChange: nx.noop, fixautoload: true }, inOptions);
         this._status = NxAudio.STATUS.init;
         this._playRes = NxDomEvent.on(this.element, 'play', callback);
         this._pauseRes = NxDomEvent.on(this.element, 'pause', callback);
         this._endedRes = NxDomEvent.on(this.element, 'ended', callback);
         this._timeupdateRes = NxDomEvent.on(this.element, 'timeupdate', callback);
         this._loadedmetadataRes = NxDomEvent.on(this.element, 'loadedmetadata', callback);
+        this._buggyRes = NxDomEvent.on(document, 'touchstart', this._onDocumentStart.bind(this));
       },
 
       destroy: function() {
@@ -51,6 +53,7 @@
         this._endedRes.destroy();
         this._timeupdateRes.destroy();
         this._loadedmetadataRes.destroy();
+        this._buggyRes.destroy();
       },
       // loop/volume/rate/current
       prop: function(inKey, inValue) {
@@ -93,6 +96,12 @@
         this.onTimeUpdate(inEvent);
         this.onLoad(inEvent);
         this.options.onChange(inEvent);
+      },
+      _onDocumentStart: function(inEvent) {
+        if (this.options.fixautoload && !this._fixautoload) {
+          this.element.load();
+          this._fixautoload = true;
+        }
       }
     }
   });
