@@ -44,14 +44,12 @@
         this._timeupdateRes = NxDomEvent.on(this.element, 'timeupdate', callback);
         this._loadedmetadataRes = NxDomEvent.on(this.element, 'loadedmetadata', callback);
       },
-
       destroy: function() {
         this._playRes.destroy();
         this._pauseRes.destroy();
         this._endedRes.destroy();
         this._timeupdateRes.destroy();
         this._loadedmetadataRes.destroy();
-        this._buggyRes.destroy();
       },
       // loop/volume/rate/current
       prop: function(inKey, inValue) {
