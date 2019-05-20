@@ -34,10 +34,7 @@
     },
     methods: {
       init: function(inElement, inOptions) {
-        if (!inElement) {
-          // nx.error('Element must be exist');
-          return;
-        }
+        if (!inElement) return;
         var callback = this._onChange.bind(this);
         this.element = inElement;
         this.options = nx.mix({ onChange: nx.noop }, inOptions);
