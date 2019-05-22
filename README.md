@@ -18,7 +18,6 @@ npm install -S afeiship/next-audio --registry=https://registry.npm.taobao.org
 | 5    | canplay | 当浏览器可以播放音频/视频时       |
 
 
-
 ## apis
 | api   | member   | params      | description                         |
 | ----- | -------- | ----------- | ----------------------------------- |
@@ -47,3 +46,5 @@ nxAudio.prop('loop', true);
 
 ## resources
 - https://www.developphp.com/lib/JavaScript/Audio
+- http://www.w3school.com.cn/html5/html5_ref_audio_video_dom.asp
+- https://www.w3schools.com/tags/ref_av_dom.asp
