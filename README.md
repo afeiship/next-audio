@@ -7,14 +7,16 @@ npm install -S afeiship/next-audio --registry=https://registry.npm.taobao.org
 ```
 
 ## status
-| code | status | description                  |
-| ---- | ------ | ---------------------------- |
-| 0    | init   | Initial load                 |
-| 1    | play   | When audio start play        |
-| 3    | pause  | When audio pause play        |
-| 3    | loaded | When audio loaded            |
-| 4    | ended  | When audio has played to end |
-| -1   | error  | When audio meet error        |
+| code | status  | description                       |
+| ---- | ------- | --------------------------------- |
+| -1   | error   | 当在音频/视频加载期间发生错误时   |
+| 0    | init    | 当音频组件在初始状态              |
+| 1    | play    | 当音频/视频已开始或不再暂停时     |
+| 2    | pause   | 当音频/视频已暂停时               |
+| 3    | loaded  | 当浏览器已加载音频/视频的元数据时 |
+| 4    | ended   | 当目前的播放列表已结束时          |
+| 5    | canplay | 当浏览器可以播放音频/视频时       |
+
 
 
 ## apis

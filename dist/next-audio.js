@@ -17,12 +17,13 @@
   var NxAudio = nx.declare('nx.Audio', {
     statics: {
       STATUS: {
+        error: -1,
         init: 0,
         play: 1,
-        loaded: 3,
         pause: 2,
+        loaded: 3,
         ended: 4,
-        error: -1
+        canplay: 5
       }
     },
     properties: {
@@ -53,6 +54,7 @@
         this._timeupdateRes = NxDomEvent.on(this.element, 'timeupdate', callback);
         this._loadedmetadataRes = NxDomEvent.on(this.element, 'loadedmetadata', callback);
         this._errorRes = NxDomEvent.on(this.element, 'error', callback);
+        this._canplayRes = NxDomEvent.on(this.element, 'canplay', callback);
       },
       destroy: function() {
         this._playRes.destroy();

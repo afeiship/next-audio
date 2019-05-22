@@ -38,7 +38,7 @@
       preload
       id="audio"
       controls
-      src="https://tsscdn.finxos.com/tu-resources/xlsfile/media/1.mp3"
+      src="http://kolber.github.io/audiojs/demos/mp3/juicy.mp3"
     >
       NOT SUPPORT
     </audio>
@@ -55,12 +55,17 @@
       var btnPause = document.getElementById('action-pause');
       var btnStop = document.getElementById('action-stop');
       var btnCurrent = document.getElementById('action-current');
+      console.time('canplay===');
       var nxAudio = new nx.Audio(document.getElementById('audio'), {
         onChange: function(inEvent) {
           const { type } = inEvent;
           console.log('type:', inEvent.type, inEvent);
           if (type === 'loadedmetadata') {
             console.log(nxAudio.times);
+          }
+          if(type === 'canplay'){
+            console.log('can play')
+            console.timeEnd('canplay===');
           }
         }
       });
