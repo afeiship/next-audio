@@ -2,6 +2,8 @@
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('next-js-core2');
   var NxDomEvent = nx.dom ? nx.dom.Event : require('next-dom-event');
+  var EVENTS = ['play', 'pause', 'ended', 'timeupdate', 'loadedmetadata', 'error', 'canplay'];
+
   var PROP_HOOKS = {
     rate: 'playbackRate',
     current: 'currentTime'
@@ -41,21 +43,14 @@
         this.element = inElement;
         this.options = nx.mix({ onChange: nx.noop }, inOptions);
         this._status = NxAudio.STATUS.init;
-        this._playRes = NxDomEvent.on(this.element, 'play', callback);
-        this._pauseRes = NxDomEvent.on(this.element, 'pause', callback);
-        this._endedRes = NxDomEvent.on(this.element, 'ended', callback);
-        this._timeupdateRes = NxDomEvent.on(this.element, 'timeupdate', callback);
-        this._loadedmetadataRes = NxDomEvent.on(this.element, 'loadedmetadata', callback);
-        this._errorRes = NxDomEvent.on(this.element, 'error', callback);
-        this._canplayRes = NxDomEvent.on(this.element, 'canplay', callback);
+        EVENTS.forEach(function(event) {
+          this['_' + event + 'Res'] = NxDomEvent.on(this.element, event, callback);
+        }, this);
       },
       destroy: function() {
-        this._playRes.destroy();
-        this._pauseRes.destroy();
-        this._endedRes.destroy();
-        this._timeupdateRes.destroy();
-        this._loadedmetadataRes.destroy();
-        this._errorRes.destroy();
+        EVENTS.forEach(function(event) {
+          this['_' + event + 'Res'].destroy();
+        }, this);
       },
       // loop/volume/rate/current
       prop: function(inKey, inValue) {
