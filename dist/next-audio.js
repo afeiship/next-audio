@@ -1,7 +1,7 @@
 /*!
  * name: next-audio
  * link: https://github.com/afeiship/next-audio
- * version: 1.0.0
+ * version: 1.0.1
  * license: MIT
  */
 
@@ -9,7 +9,15 @@
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('next-js-core2');
   var NxDomEvent = nx.dom ? nx.dom.Event : require('next-dom-event');
-  var EVENTS = ['play', 'pause', 'ended', 'timeupdate', 'loadedmetadata', 'error', 'canplay'];
+  var EVENTS = [
+    'play',
+    'pause',
+    'ended',
+    'timeupdate',
+    'loadedmetadata',
+    'error',
+    'canplay'
+  ];
 
   var PROP_HOOKS = {
     rate: 'playbackRate',
@@ -51,7 +59,11 @@
         this.options = nx.mix({ onChange: nx.noop }, inOptions);
         this._status = NxAudio.STATUS.init;
         EVENTS.forEach(function(event) {
-          this['_' + event + 'Res'] = NxDomEvent.on(this.element, event, callback);
+          this['_' + event + 'Res'] = NxDomEvent.on(
+            this.element,
+            event,
+            callback
+          );
         }, this);
       },
       destroy: function() {

@@ -14,6 +14,7 @@
 
   gulp.task('bump', function () {
     gulp.src(['./*.json'])
+      .pipe($.debug())
       .pipe($.bump())
       .pipe(gulp.dest('./'));
   });

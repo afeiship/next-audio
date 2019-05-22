@@ -1,6 +1,7 @@
 {
   "name": "next-audio",
-  "description": "Pure audio api for next",
+  "version": "1.0.1",
+  "description": "Pure audio api for next.",
   "main": "dist/next-audio.js",
   "authors": [
     "afei"
