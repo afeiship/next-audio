@@ -14,7 +14,8 @@
         play: 1,
         loaded: 3,
         pause: 2,
-        ended: 4
+        ended: 4,
+        error: -1
       }
     },
     properties: {
@@ -44,6 +45,7 @@
         this._endedRes = NxDomEvent.on(this.element, 'ended', callback);
         this._timeupdateRes = NxDomEvent.on(this.element, 'timeupdate', callback);
         this._loadedmetadataRes = NxDomEvent.on(this.element, 'loadedmetadata', callback);
+        this._errorRes = NxDomEvent.on(this.element, 'error', callback);
       },
       destroy: function() {
         this._playRes.destroy();
@@ -51,6 +53,7 @@
         this._endedRes.destroy();
         this._timeupdateRes.destroy();
         this._loadedmetadataRes.destroy();
+        this._errorRes.destroy();
       },
       // loop/volume/rate/current
       prop: function(inKey, inValue) {
