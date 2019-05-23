@@ -3,12 +3,12 @@
   var nx = global.nx || require('next-js-core2');
   var NxDomEvent = nx.dom ? nx.dom.Event : require('next-dom-event');
   var EVENTS = [
+    'error',
     'play',
     'pause',
     'ended',
     'timeupdate',
     'loadedmetadata',
-    'error',
     'canplay'
   ];
 
