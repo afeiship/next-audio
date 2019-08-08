@@ -1,6 +1,6 @@
 /*!
  * name: next-audio
- * link: https://github.com/afeiship/next-audio
+ * url: https://github.com/afeiship/next-audio
  * version: 1.0.1
  * license: MIT
  */
@@ -70,6 +70,10 @@
         EVENTS.forEach(function(event) {
           this['_' + event + 'Res'].destroy();
         }, this);
+      },
+      reInit: function(inElement, inOptions) {
+        this.destroy();
+        this.init(inElement, inOptions);
       },
       // loop/volume/rate/current
       prop: function(inKey, inValue) {

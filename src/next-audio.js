@@ -64,6 +64,10 @@
           this['_' + event + 'Res'].destroy();
         }, this);
       },
+      reInit: function(inElement, inOptions) {
+        this.destroy();
+        this.init(inElement, inOptions);
+      },
       // loop/volume/rate/current
       prop: function(inKey, inValue) {
         var key = PROP_HOOKS[inKey] || inKey;
