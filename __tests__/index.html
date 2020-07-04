@@ -43,6 +43,7 @@
     <button id="action-play">PLAY</button>
     <button id="action-pause">PAUSE</button>
     <button id="action-stop">STOP</button>
+    <button id="action-destroy">Destroy</button>
   </div>
   <input type="range" name="test" id="action-current" />
   <script>
@@ -50,6 +51,7 @@
     var btnPause = document.getElementById('action-pause');
     var btnStop = document.getElementById('action-stop');
     var btnCurrent = document.getElementById('action-current');
+    var btnDestroy = document.getElementById('action-destroy');
     var el = document.getElementById('audio');
     console.time('canplay===', el);
     var nxAudio = new nx.Audio(el, {
@@ -74,6 +76,9 @@
     btnStop.onclick = function () {
       nxAudio.stop();
     };
+    btnDestroy.onclick = function() {
+      nxAudio.destroy();
+    }
     btnCurrent.onchange = function (e) {
       console.log(e.target.value);
     };
