@@ -79,7 +79,7 @@
         }
         this.element[key] = inValue;
       },
-      move: function (inNumber) {
+      seek: function (inNumber) {
         var num = inNumber > 1 ? 1 : inNumber;
         this.element.currentTime = this.times.duration * num;
       },

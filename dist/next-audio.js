@@ -2,8 +2,8 @@
  * name: @feizheng/next-audio
  * description: Pure audio api for next.
  * homepage: https://github.com/afeiship/next-audio
- * version: 1.1.5
- * date: 2020-07-04T15:33:16.584Z
+ * version: 1.1.6
+ * date: 2020-07-04T23:45:28.825Z
  * license: MIT
  */
 
@@ -88,7 +88,7 @@
         }
         this.element[key] = inValue;
       },
-      move: function (inNumber) {
+      seek: function (inNumber) {
         var num = inNumber > 1 ? 1 : inNumber;
         this.element.currentTime = this.times.duration * num;
       },
