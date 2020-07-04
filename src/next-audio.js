@@ -64,7 +64,7 @@
         EVENTS.forEach(function (event) {
           this['_' + event + 'Res'].destroy();
         }, this);
-        document.documentElement.remove(this.element);
+        document.documentElement.removeChild(this.element);
         this.element = null;
       },
       reInit: function (inElement, inOptions) {
