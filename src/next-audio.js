@@ -37,7 +37,7 @@
           return {
             rate: +(el.currentTime / el.duration).toFixed(2),
             current: el.currentTime || 0,
-            total: el.duration || 0
+            duration: el.duration || 0
           };
         }
       },
@@ -81,17 +81,20 @@
       },
       move: function (inNumber) {
         var num = inNumber > 1 ? 1 : inNumber;
-        this.element.currentTime = this.times.total * num;
+        this.element.currentTime = this.times.duration * num;
       },
       play: function () {
-        this.element.play();
+        if (!this.element) return Promise.resolve();
+        return this.element.play();
       },
       pause: function () {
+        if (!this.element) return Promise.resolve();
         this.element.pause();
       },
       stop: function () {
+        if (!this.element) return Promise.resolve();
         this.element.pause();
-        this.element.currentTime = this.times.total;
+        this.element.currentTime = this.times.duration;
       },
       onTimeUpdate: function (inEvent) {
         var type = inEvent.type;
