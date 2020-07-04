@@ -1,7 +1,7 @@
 (function () {
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('@feizheng/next-js-core2');
-  var NxDomEvent = nx.DomEvent || require('next-dom-event');
+  var NxDomEvent = nx.DomEvent || require('@feizheng/next-dom-event');
 
   var EVENTS = [
     'error',

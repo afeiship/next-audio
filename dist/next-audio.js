@@ -2,15 +2,15 @@
  * name: @feizheng/next-audio
  * description: Pure audio api for next.
  * homepage: https://github.com/afeiship/next-audio
- * version: 1.0.0
- * date: 2020-07-04T11:23:09.963Z
+ * version: 1.1.0
+ * date: 2020-07-04T11:44:49.635Z
  * license: MIT
  */
 
 (function () {
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('@feizheng/next-js-core2');
-  var NxDomEvent = nx.DomEvent || require('next-dom-event');
+  var NxDomEvent = nx.DomEvent || require('@feizheng/next-dom-event');
 
   var EVENTS = [
     'error',
