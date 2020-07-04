@@ -48,7 +48,7 @@
     methods: {
       init: function (inElement, inOptions) {
         if (!inElement) return;
-        var callback = this._onChange.bind(this);
+        var callback = this.onChange.bind(this);
         this.element = inElement;
         this.options = nx.mix({ onChange: nx.noop }, inOptions);
         this._status = NxAudio.STATUS.init;
@@ -89,12 +89,12 @@
       },
       pause: function () {
         if (!this.element) return Promise.resolve();
-        this.element.pause();
+        return this.element.pause();
       },
       stop: function () {
         if (!this.element) return Promise.resolve();
-        this.element.pause();
         this.element.currentTime = this.times.duration;
+        return this.element.pause();
       },
       onTimeUpdate: function (inEvent) {
         var type = inEvent.type;
@@ -111,7 +111,7 @@
           this._status = NxAudio.STATUS.loaded;
         }
       },
-      _onChange: function (inEvent) {
+      onChange: function (inEvent) {
         this.onTimeUpdate(inEvent);
         this.onLoad(inEvent);
         this.options.onChange(inEvent);

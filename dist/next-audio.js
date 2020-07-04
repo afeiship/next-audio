@@ -2,8 +2,8 @@
  * name: @feizheng/next-audio
  * description: Pure audio api for next.
  * homepage: https://github.com/afeiship/next-audio
- * version: 1.1.4
- * date: 2020-07-04T15:30:26.037Z
+ * version: 1.1.5
+ * date: 2020-07-04T15:33:16.584Z
  * license: MIT
  */
 
@@ -57,7 +57,7 @@
     methods: {
       init: function (inElement, inOptions) {
         if (!inElement) return;
-        var callback = this._onChange.bind(this);
+        var callback = this.onChange.bind(this);
         this.element = inElement;
         this.options = nx.mix({ onChange: nx.noop }, inOptions);
         this._status = NxAudio.STATUS.init;
@@ -98,12 +98,12 @@
       },
       pause: function () {
         if (!this.element) return Promise.resolve();
-        this.element.pause();
+        return this.element.pause();
       },
       stop: function () {
         if (!this.element) return Promise.resolve();
-        this.element.pause();
         this.element.currentTime = this.times.duration;
+        return this.element.pause();
       },
       onTimeUpdate: function (inEvent) {
         var type = inEvent.type;
@@ -120,7 +120,7 @@
           this._status = NxAudio.STATUS.loaded;
         }
       },
-      _onChange: function (inEvent) {
+      onChange: function (inEvent) {
         this.onTimeUpdate(inEvent);
         this.onLoad(inEvent);
         this.options.onChange(inEvent);
