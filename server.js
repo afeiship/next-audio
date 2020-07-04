@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
-const portNumber = 3000;
+const portNumber = 4000;
 
 app.use(express.static('src'));
-app.use(express.static('test'));
+app.use(express.static('__tests__'));
 app.use(express.static('node_modules'));
 
 app.listen(portNumber, () => {

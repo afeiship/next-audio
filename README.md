@@ -1,9 +1,14 @@
 # next-audio
 > Pure audio api for next.
 
-## install
+[![version][version-image]][version-url]
+[![license][license-image]][license-url]
+[![size][size-image]][size-url]
+[![download][download-image]][download-url]
+
+## installation
 ```bash
-npm install -S afeiship/next-audio --registry=https://registry.npm.taobao.org
+npm install -S @feizheng/next-audio
 ```
 
 ## status
@@ -48,3 +53,18 @@ nxAudio.prop('loop', true);
 - https://www.developphp.com/lib/JavaScript/Audio
 - http://www.w3school.com.cn/html5/html5_ref_audio_video_dom.asp
 - https://www.w3schools.com/tags/ref_av_dom.asp
+
+## license
+Code released under [the MIT license](https://github.com/afeiship/next-audio/blob/master/LICENSE.txt).
+
+[version-image]: https://img.shields.io/npm/v/@feizheng/next-audio
+[version-url]: https://npmjs.org/package/@feizheng/next-audio
+
+[license-image]: https://img.shields.io/npm/l/@feizheng/next-audio
+[license-url]: https://github.com/afeiship/next-audio/blob/master/LICENSE.txt
+
+[size-image]: https://img.shields.io/bundlephobia/minzip/@feizheng/next-audio
+[size-url]: https://github.com/afeiship/next-audio/blob/master/dist/next-audio.min.js
+
+[download-image]: https://img.shields.io/npm/dm/@feizheng/next-audio
+[download-url]: https://www.npmjs.com/package/@feizheng/next-audio

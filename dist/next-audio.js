@@ -1,14 +1,17 @@
 /*!
- * name: next-audio
- * url: https://github.com/afeiship/next-audio
- * version: 1.0.1
+ * name: @feizheng/next-audio
+ * description: Pure audio api for next.
+ * homepage: https://github.com/afeiship/next-audio
+ * version: 1.0.0
+ * date: 2020-07-04T11:23:09.963Z
  * license: MIT
  */
 
-(function() {
+(function () {
   var global = global || this || window || Function('return this')();
-  var nx = global.nx || require('next-js-core2');
-  var NxDomEvent = nx.dom ? nx.dom.Event : require('next-dom-event');
+  var nx = global.nx || require('@feizheng/next-js-core2');
+  var NxDomEvent = nx.DomEvent || require('next-dom-event');
+
   var EVENTS = [
     'error',
     'play',
@@ -38,7 +41,7 @@
     },
     properties: {
       times: {
-        get: function() {
+        get: function () {
           var el = this.element;
           return {
             rate: +(el.currentTime / el.duration).toFixed(2),
@@ -47,18 +50,18 @@
           };
         }
       },
-      status: function() {
+      status: function () {
         return this._status;
       }
     },
     methods: {
-      init: function(inElement, inOptions) {
+      init: function (inElement, inOptions) {
         if (!inElement) return;
         var callback = this._onChange.bind(this);
         this.element = inElement;
         this.options = nx.mix({ onChange: nx.noop }, inOptions);
         this._status = NxAudio.STATUS.init;
-        EVENTS.forEach(function(event) {
+        EVENTS.forEach(function (event) {
           this['_' + event + 'Res'] = NxDomEvent.on(
             this.element,
             event,
@@ -66,38 +69,38 @@
           );
         }, this);
       },
-      destroy: function() {
-        EVENTS.forEach(function(event) {
+      destroy: function () {
+        EVENTS.forEach(function (event) {
           this['_' + event + 'Res'].destroy();
         }, this);
       },
-      reInit: function(inElement, inOptions) {
+      reInit: function (inElement, inOptions) {
         this.destroy();
         this.init(inElement, inOptions);
       },
       // loop/volume/rate/current
-      prop: function(inKey, inValue) {
+      prop: function (inKey, inValue) {
         var key = PROP_HOOKS[inKey] || inKey;
         if (typeof inValue === 'undefined') {
           return this.element[key];
         }
         this.element[key] = inValue;
       },
-      move: function(inNumber) {
+      move: function (inNumber) {
         var num = inNumber > 1 ? 1 : inNumber;
         this.element.currentTime = this.times.total * num;
       },
-      play: function() {
+      play: function () {
         this.element.play();
       },
-      pause: function() {
+      pause: function () {
         this.element.pause();
       },
-      stop: function() {
+      stop: function () {
         this.element.pause();
         this.element.currentTime = this.times.total;
       },
-      onTimeUpdate: function(inEvent) {
+      onTimeUpdate: function (inEvent) {
         var type = inEvent.type;
         var paused = this.element.paused;
         if (type !== 'timeupdate') {
@@ -106,13 +109,13 @@
           this._status = paused ? NxAudio.STATUS.pause : NxAudio.STATUS.play;
         }
       },
-      onLoad: function(inEvent) {
+      onLoad: function (inEvent) {
         var type = inEvent.type;
         if (type === 'loadedmetadata') {
           this._status = NxAudio.STATUS.loaded;
         }
       },
-      _onChange: function(inEvent) {
+      _onChange: function (inEvent) {
         this.onTimeUpdate(inEvent);
         this.onLoad(inEvent);
         this.options.onChange(inEvent);
@@ -124,3 +127,5 @@
     module.exports = NxAudio;
   }
 })();
+
+//# sourceMappingURL=next-audio.js.map
