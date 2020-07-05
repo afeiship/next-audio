@@ -54,7 +54,7 @@ npm install -S @feizheng/next-audio
 import NxAudio from 'next-audio';
 
 // code goes here:
-const nxAudio = new nx.Audio({ element: document.getElementById('audio') });
+const nxAudio = new NxAudio({ element: document.getElementById('audio') });
 nxAudio.play();
 nxAudio.prop('loop', true);
 ```
