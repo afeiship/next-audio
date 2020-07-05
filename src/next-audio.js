@@ -74,10 +74,13 @@
       // loop/volume/rate/current/muted
       prop: function (inKey, inValue) {
         var key = PROP_HOOKS[inKey] || inKey;
+        var value = this.element[key];
+        var event = { type: 'prop', target: { key: inKey, value: value } };
         if (typeof inValue === 'undefined') {
-          return this.element[key];
+          return value;
         }
         this.element[key] = inValue;
+        this.options.onChange(event);
       },
       move: function (inNumber) {
         var num = inNumber > 1 ? 1 : inNumber;

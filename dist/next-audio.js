@@ -2,8 +2,8 @@
  * name: @feizheng/next-audio
  * description: Pure audio api for next.
  * homepage: https://github.com/afeiship/next-audio
- * version: 1.1.6
- * date: 2020-07-05T01:16:52.534Z
+ * version: 1.1.7
+ * date: 2020-07-05T06:17:39.888Z
  * license: MIT
  */
 
@@ -83,10 +83,13 @@
       // loop/volume/rate/current/muted
       prop: function (inKey, inValue) {
         var key = PROP_HOOKS[inKey] || inKey;
+        var value = this.element[key];
+        var event = { type: 'prop', target: { key: inKey, value: value } };
         if (typeof inValue === 'undefined') {
-          return this.element[key];
+          return value;
         }
         this.element[key] = inValue;
+        this.options.onChange(event);
       },
       move: function (inNumber) {
         var num = inNumber > 1 ? 1 : inNumber;
