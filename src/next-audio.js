@@ -10,6 +10,7 @@
     'ended',
     'timeupdate',
     'loadedmetadata',
+    'load',
     'canplay'
   ];
 
@@ -67,10 +68,6 @@
         document.body.removeChild(this.element);
         this.element = null;
       },
-      reInit: function (inElement, inOptions) {
-        this.destroy();
-        this.init(inElement, inOptions);
-      },
       // loop/volume/rate/current/muted
       prop: function (inKey, inValue) {
         var key = PROP_HOOKS[inKey] || inKey;
@@ -82,20 +79,18 @@
         this.element[key] = inValue;
         this.options.onChange(event);
       },
+      'play,pause,load': function (inName) {
+        return function () {
+          if (!this.element) return Promise.resolve();
+          return this.element[inName].apply(this.element, arguments);
+        }
+      },
       move: function (inNumber) {
         var num = inNumber > 1 ? 1 : inNumber;
         this.element.currentTime = this.times.duration * num;
       },
       seek: function (inNumber) {
         this.element.currentTime = inNumber;
-      },
-      play: function () {
-        if (!this.element) return Promise.resolve();
-        return this.element.play();
-      },
-      pause: function () {
-        if (!this.element) return Promise.resolve();
-        return this.element.pause();
       },
       stop: function () {
         if (!this.element) return Promise.resolve();

@@ -28,6 +28,7 @@ npm install -S @feizheng/next-audio
 | ----- | -------- | ----------- | ----------------------------------- |
 | play  | method   | -           | Play audio                          |
 | pause | method   | -           | Pause audio                         |
+| load  | method   | -           | Force load audio                    |
 | stop  | method   | -           | Stop audio                          |
 | seek  | method   | (num)       | Set seek by currentTime             |
 | move  | method   | (num)       | Set seek percent(0-1)               |
@@ -42,6 +43,7 @@ npm install -S @feizheng/next-audio
 | rate    | Set/get playback rate      |
 | current | Set/get play currentTime   |
 | muted   | Set/get muted(mute/unmute) |
+| ended   | Get if audio is ended      |
 
 ## usage
 ```html

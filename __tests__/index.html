@@ -56,13 +56,13 @@
     var nxAudio = new nx.Audio(el, {
       onChange: function (inEvent) {
         const { type } = inEvent;
-        console.log('type:', inEvent.type, inEvent);
+        console.log('type:', type);
+        // console.log('type:', inEvent.type, inEvent);
         if (type === 'loadedmetadata') {
           console.log(nxAudio.times);
         }
         if (type === 'canplay') {
           console.log('can play')
-          console.timeEnd('canplay===');
         }
       }
     });
