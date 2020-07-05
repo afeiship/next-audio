@@ -3,7 +3,7 @@
  * description: Pure audio api for next.
  * homepage: https://github.com/afeiship/next-audio
  * version: 1.1.6
- * date: 2020-07-04T23:45:28.825Z
+ * date: 2020-07-05T01:16:52.534Z
  * license: MIT
  */
 
@@ -80,7 +80,7 @@
         this.destroy();
         this.init(inElement, inOptions);
       },
-      // loop/volume/rate/current
+      // loop/volume/rate/current/muted
       prop: function (inKey, inValue) {
         var key = PROP_HOOKS[inKey] || inKey;
         if (typeof inValue === 'undefined') {
@@ -88,9 +88,12 @@
         }
         this.element[key] = inValue;
       },
-      seek: function (inNumber) {
+      move: function (inNumber) {
         var num = inNumber > 1 ? 1 : inNumber;
         this.element.currentTime = this.times.duration * num;
+      },
+      seek: function (inNumber) {
+        this.element.currentTime = inNumber;
       },
       play: function () {
         if (!this.element) return Promise.resolve();

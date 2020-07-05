@@ -53,11 +53,10 @@
     var btnCurrent = document.getElementById('action-current');
     var btnDestroy = document.getElementById('action-destroy');
     var el = document.getElementById('audio');
-    console.time('canplay===', el);
     var nxAudio = new nx.Audio(el, {
       onChange: function (inEvent) {
         const { type } = inEvent;
-        console.log('type:', inEvent.type, nxAudio.times);
+        // console.log('type:', inEvent.type, nxAudio.times);
         if (type === 'loadedmetadata') {
           console.log(nxAudio.times);
         }

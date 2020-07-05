@@ -71,7 +71,7 @@
         this.destroy();
         this.init(inElement, inOptions);
       },
-      // loop/volume/rate/current
+      // loop/volume/rate/current/muted
       prop: function (inKey, inValue) {
         var key = PROP_HOOKS[inKey] || inKey;
         if (typeof inValue === 'undefined') {
@@ -79,9 +79,12 @@
         }
         this.element[key] = inValue;
       },
-      seek: function (inNumber) {
+      move: function (inNumber) {
         var num = inNumber > 1 ? 1 : inNumber;
         this.element.currentTime = this.times.duration * num;
+      },
+      seek: function (inNumber) {
+        this.element.currentTime = inNumber;
       },
       play: function () {
         if (!this.element) return Promise.resolve();
