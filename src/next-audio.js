@@ -62,10 +62,18 @@
         }, this);
       },
       destroy: function () {
+        // destroy events:
         EVENTS.forEach(function (event) {
           this['_' + event + 'Res'].destroy();
         }, this);
-        document.body.removeChild(this.element);
+
+        // destroy from memory
+        this.element.pause();
+        this.element.src = "";
+        this.element.load();
+
+        // destroy from dom
+        this.element.remove();
         this.element = null;
       },
       // loop/volume/rate/current/muted
