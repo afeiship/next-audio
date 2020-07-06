@@ -23,7 +23,7 @@ npm install -S @feizheng/next-audio
 | 5    | canplay | 当浏览器可以播放音频/视频时       |
 
 
-## apis
+## method
 | api     | member   | params      | description                                |
 | ------- | -------- | ----------- | ------------------------------------------ |
 | play    | method   | -           | Play audio                                 |
@@ -36,7 +36,7 @@ npm install -S @feizheng/next-audio
 | prop    | method   | (name,args) | Set props(loop/volume/rate/current)        |
 | times   | property | -           | Return rate/current/total seconds          |
 
-## props
+## method - prop(name)
 | name    | description                |
 | ------- | -------------------------- |
 | loop    | Set/get loop               |
@@ -45,6 +45,9 @@ npm install -S @feizheng/next-audio
 | current | Set/get play currentTime   |
 | muted   | Set/get muted(mute/unmute) |
 | ended   | Get if audio is ended      |
+
+## property
+- times
 
 ## usage
 ```html
