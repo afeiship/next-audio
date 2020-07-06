@@ -2,8 +2,8 @@
  * name: @feizheng/next-audio
  * description: Pure audio api for next.
  * homepage: https://github.com/afeiship/next-audio
- * version: 1.1.8
- * date: 2020-07-05T07:31:25.446Z
+ * version: 1.1.9
+ * date: 2020-07-06T03:37:41.249Z
  * license: MIT
  */
 
@@ -12,15 +12,28 @@
   var nx = global.nx || require('@feizheng/next-js-core2');
   var NxDomEvent = nx.DomEvent || require('@feizheng/next-dom-event');
 
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
   var EVENTS = [
-    'error',
-    'play',
-    'pause',
-    'ended',
-    'timeupdate',
-    'loadedmetadata',
-    'load',
-    'canplay'
+    "audioprocess",
+    "canplay",
+    "canplaythrough",
+    "complete",
+    "durationchange",
+    "emptied",
+    "ended",
+    "loadeddata",
+    "loadedmetadata",
+    "pause",
+    "play",
+    "playing",
+    "ratechange",
+    "seeked",
+    "seeking",
+    "stalled",
+    "suspend",
+    "timeupdate",
+    "volumechange",
+    "waiting"
   ];
 
   var PROP_HOOKS = {

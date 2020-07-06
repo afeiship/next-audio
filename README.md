@@ -66,6 +66,7 @@ nxAudio.prop('loop', true);
 - https://www.developphp.com/lib/JavaScript/Audio
 - http://www.w3school.com.cn/html5/html5_ref_audio_video_dom.asp
 - https://www.w3schools.com/tags/ref_av_dom.asp
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
 
 ## license
 Code released under [the MIT license](https://github.com/afeiship/next-audio/blob/master/LICENSE.txt).

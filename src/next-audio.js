@@ -3,15 +3,28 @@
   var nx = global.nx || require('@feizheng/next-js-core2');
   var NxDomEvent = nx.DomEvent || require('@feizheng/next-dom-event');
 
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
   var EVENTS = [
-    'error',
-    'play',
-    'pause',
-    'ended',
-    'timeupdate',
-    'loadedmetadata',
-    'load',
-    'canplay'
+    "audioprocess",
+    "canplay",
+    "canplaythrough",
+    "complete",
+    "durationchange",
+    "emptied",
+    "ended",
+    "loadeddata",
+    "loadedmetadata",
+    "pause",
+    "play",
+    "playing",
+    "ratechange",
+    "seeked",
+    "seeking",
+    "stalled",
+    "suspend",
+    "timeupdate",
+    "volumechange",
+    "waiting"
   ];
 
   var PROP_HOOKS = {
