@@ -24,17 +24,17 @@ npm install -S @feizheng/next-audio
 
 
 ## method
-| api     | member   | params      | description                                |
-| ------- | -------- | ----------- | ------------------------------------------ |
-| play    | method   | -           | Play audio                                 |
-| pause   | method   | -           | Pause audio                                |
-| load    | method   | -           | Force load audio                           |
-| stop    | method   | -           | Stop audio                                 |
-| seek    | method   | (num)       | Set seek by currentTime                    |
-| move    | method   | (num)       | Set seek percent(0-1)                      |
-| destroy | method   | (num)       | Destroy from memroy/dom and unload events. |
-| prop    | method   | (name,args) | Set props(loop/volume/rate/current)        |
-| times   | property | -           | Return rate/current/total seconds          |
+| api     | member | params      | description                                |
+| ------- | ------ | ----------- | ------------------------------------------ |
+| play    | method | -           | Play audio                                 |
+| pause   | method | -           | Pause audio                                |
+| load    | method | -           | Force load audio                           |
+| stop    | method | -           | Stop audio                                 |
+| seek    | method | (num)       | Set seek by currentTime                    |
+| move    | method | (num)       | Set seek percent(0-1)                      |
+| destroy | method | (num)       | Destroy from memroy/dom and unload events. |
+| prop    | method | (name,args) | Set props(loop/volume/rate/current)        |
+
 
 ## method - prop(name)
 | name    | description                |
@@ -47,7 +47,10 @@ npm install -S @feizheng/next-audio
 | ended   | Get if audio is ended      |
 
 ## property
-- times
+| api    | member   | params | description                          |
+| ------ | -------- | ------ | ------------------------------------ |
+| times  | property | -      | Return rate/current/duration seconds |
+| status | property | -      | Get current status.                  |
 
 ## usage
 ```html
