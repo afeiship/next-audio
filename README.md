@@ -8,7 +8,7 @@
 
 ## installation
 ```bash
-npm install -S @feizheng/next-audio
+npm install -S @jswork/next-audio
 ```
 
 ## status
@@ -60,7 +60,7 @@ npm install -S @feizheng/next-audio
 ```
 
 ```js
-import NxAudio from 'next-audio';
+import NxAudio from '@jswork/next-audio';
 
 // code goes here:
 const nxAudio = new NxAudio({ element: document.getElementById('audio') });
@@ -74,17 +74,18 @@ nxAudio.prop('loop', true);
 - https://www.w3schools.com/tags/ref_av_dom.asp
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
 
+
 ## license
 Code released under [the MIT license](https://github.com/afeiship/next-audio/blob/master/LICENSE.txt).
 
-[version-image]: https://img.shields.io/npm/v/@feizheng/next-audio
-[version-url]: https://npmjs.org/package/@feizheng/next-audio
+[version-image]: https://img.shields.io/npm/v/@jswork/next-audio
+[version-url]: https://npmjs.org/package/@jswork/next-audio
 
-[license-image]: https://img.shields.io/npm/l/@feizheng/next-audio
+[license-image]: https://img.shields.io/npm/l/@jswork/next-audio
 [license-url]: https://github.com/afeiship/next-audio/blob/master/LICENSE.txt
 
-[size-image]: https://img.shields.io/bundlephobia/minzip/@feizheng/next-audio
+[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/next-audio
 [size-url]: https://github.com/afeiship/next-audio/blob/master/dist/next-audio.min.js
 
-[download-image]: https://img.shields.io/npm/dm/@feizheng/next-audio
-[download-url]: https://www.npmjs.com/package/@feizheng/next-audio
+[download-image]: https://img.shields.io/npm/dm/@jswork/next-audio
+[download-url]: https://www.npmjs.com/package/@jswork/next-audio

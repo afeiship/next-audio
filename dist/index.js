@@ -1,30 +1,39 @@
-(function () {
+/*!
+ * name: @jswork/next-audio
+ * description: Pure audio api for next.
+ * homepage: https://github.com/afeiship/next-audio
+ * version: 1.0.0
+ * date: 2020-11-20 20:37:33
+ * license: MIT
+ */
+
+(function() {
   var global = global || this || window || Function('return this')();
-  var nx = global.nx || require('@feizheng/next-js-core2');
-  var NxDomEvent = nx.DomEvent || require('@feizheng/next-dom-event');
+  var nx = global.nx || require('@jswork/next');
+  var NxDomEvent = nx.DomEvent || require('@jswork/next-dom-event');
 
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
   var EVENTS = [
-    "audioprocess",
-    "canplay",
-    "canplaythrough",
-    "complete",
-    "durationchange",
-    "emptied",
-    "ended",
-    "loadeddata",
-    "loadedmetadata",
-    "pause",
-    "play",
-    "playing",
-    "ratechange",
-    "seeked",
-    "seeking",
-    "stalled",
-    "suspend",
-    "timeupdate",
-    "volumechange",
-    "waiting"
+    'audioprocess',
+    'canplay',
+    'canplaythrough',
+    'complete',
+    'durationchange',
+    'emptied',
+    'ended',
+    'loadeddata',
+    'loadedmetadata',
+    'pause',
+    'play',
+    'playing',
+    'ratechange',
+    'seeked',
+    'seeking',
+    'stalled',
+    'suspend',
+    'timeupdate',
+    'volumechange',
+    'waiting'
   ];
 
   var PROP_HOOKS = {
@@ -67,11 +76,7 @@
         this.options = nx.mix({ onChange: nx.noop }, inOptions);
         this._status = NxAudio.STATUS.init;
         EVENTS.forEach(function (event) {
-          this['_' + event + 'Res'] = NxDomEvent.on(
-            this.element,
-            event,
-            callback
-          );
+          this['_' + event + 'Res'] = NxDomEvent.on(this.element, event, callback);
         }, this);
       },
       destroy: function () {
@@ -82,7 +87,7 @@
 
         // destroy from memory
         this.element.pause();
-        this.element.src = "";
+        this.element.src = '';
         this.element.load();
 
         // destroy from dom
@@ -104,7 +109,7 @@
         return function () {
           if (!this.element) return Promise.resolve();
           return this.element[inName].apply(this.element, arguments);
-        }
+        };
       },
       move: function (inNumber) {
         var num = inNumber > 1 ? 1 : inNumber;
