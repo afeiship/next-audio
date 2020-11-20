@@ -3,7 +3,7 @@
  * description: Pure audio api for next.
  * homepage: https://github.com/afeiship/next-audio
  * version: 1.0.0
- * date: 2020-11-20 20:37:33
+ * date: 2020-11-20 20:40:23
  * license: MIT
  */
 
